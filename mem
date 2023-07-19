@@ -1,0 +1,25 @@
+import discord
+from discord.ext import commands
+import os
+import random
+
+velina = os.listdir('images')
+velina1 = os.listdir('programming')
+
+bot = commands.Bot(command_prefix='$', intents=discord.Intents.all())
+
+@bot.command('mem')
+async def mem(ctx):
+    img_name = random.choice(velina)
+    with open(f'images/{img_name}', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
+    
+@bot.command('programming')
+async def programming(ctx):
+    img_name = random.choice(velina1)
+    with open(f'programming/{img_name}', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
+    
+bot.run('MTExOTMwNDc0MTQ3MDYwNTMzNA.GHkpoo.ZFJTjwxFfsRrhhhgvfgu4xIKj_UMLU8LHYlp6M')
